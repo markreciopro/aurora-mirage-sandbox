@@ -37,7 +37,7 @@ property_choice = st.sidebar.selectbox(
 module_choice = st.sidebar.selectbox(
     "Select Intelligence Module",
     [
-        "Step 1: Testing Protocol & Monthly Schedule",
+        "Step 1: Testing Protocol & 4-Month Master Schedule",
         "Module 1: Executive Overview & Daily Workflow",
         "Module 2: Net RevPAR & Revenue Audit",
         "Module 3: Workforce Intelligence & Labor Optimization",
@@ -81,7 +81,7 @@ st.session_state.labor_flexing = st.sidebar.toggle(
 
 st.sidebar.markdown("---")
 st.sidebar.subheader("👥 Research Team Guide")
-with st.sidebar.expander("2-Person Sprint Instructions"):
+with st.sidebar.expander("Two-Party Execution Protocol"):
     st.markdown(
         """
     * **Principal Consultant (You):** Define macro stress-test scenarios, govern AI override rules, and validate executive strategic alignment.
@@ -95,7 +95,7 @@ with st.sidebar.expander("2-Person Sprint Instructions"):
 # Header Banner based on state
 if st.session_state.ai_guardrails:
     st.info(
-        "🛡️️ **AI Governance Active:** Human-in-the-loop variance testing enabled for algorithmic yield recommendations."
+        "🛡 **AI Governance Active:** Human-in-the-loop variance testing enabled for algorithmic yield recommendations."
     )
 else:
     st.warning(
@@ -105,8 +105,8 @@ else:
 # Compute dynamic scaling factors based on demand shift
 demand_multiplier = 1 + (st.session_state.demand_shift / 100.0)
 
-# --- STEP 1: TESTING PROTOCOL & MONTHLY SCHEDULE ---
-if module_choice == "Step 1: Testing Protocol & Monthly Schedule":
+# --- STEP 1: TESTING PROTOCOL & 4-MONTH MASTER SCHEDULE ---
+if module_choice == "Step 1: Testing Protocol & 4-Month Master Schedule":
     st.title("🎯 Step 1: Test and Interact with the Live Sandbox Controls")
     st.markdown(
         "**Core Objective:** Establish operational control parameters and simulate real-time decision-making within the simulated 400-room Aurora Mirage luxury property."
@@ -150,38 +150,50 @@ if module_choice == "Step 1: Testing Protocol & Monthly Schedule":
 
     st.markdown("---")
     st.subheader(
-        "📅 Recommended Monthly Research Schedule (Two-Party Execution)"
+        "📅 4-Month Master Execution Dataset: Schedule, Timeline & Action Plan"
+    )
+    st.markdown(
+        "The following structured dataset outlines the exact schedule, timeline, responsible parties, and detailed instructions for executing the 4-month property evaluation sprint."
     )
 
-    monthly_schedule_df = pd.DataFrame(
+    master_schedule_df = pd.DataFrame(
         {
-            "Sprint Phase": [
-                "Phase 1: Week 1",
-                "Phase 2: Week 2",
-                "Phase 3: Week 3",
-                "Phase 4: Week 4",
+            "Schedule / Timeline": [
+                "Month 1: Baseline & Setup",
+                "Month 2: Workforce Stress-Testing",
+                "Month 3: Revenue & Channel Optimization",
+                "Month 4: AI Governance & Final Audit",
             ],
-            "Focus & Objective": [
-                "Baseline Calibration & System Sync",
-                "Workforce & Labor Stress-Testing",
-                "Revenue & Channel Mix Optimization",
-                "AI Governance, HITL & Final Export",
+            "Responsible Party": [
+                "Principal Consultant & Researcher",
+                "Graduate Researcher (Execution)",
+                "Principal Consultant & Researcher",
+                "Principal Consultant (Sign-Off)",
             ],
-            "Principal Consultant Actions (You)": [
-                "Define property boundary parameters and verify PMS/HRIS data stream baseline integrity.",
-                "Review departmental headcounts and approve/reject simulated overtime requests under stress.",
-                "Evaluate gross vs. net asset profitability and set channel acquisition targets.",
-                "Review HITL override logs and sign off on governance audit reports for publication.",
+            "Action Needed": [
+                "Initialize digital twin parameters, verify PMS/HRIS data stream baseline integrity, and record 0% demand shift benchmarks.",
+                "Execute $\pm 15\%$ demand shocks via sidebar slider; test cross-departmental flexing protocols and log HPOR/LPR metric shifts.",
+                "Simulate distribution channel shifts (OTA dependent vs. Direct Push); evaluate net margins and commission margin leaks.",
+                "Trigger extreme demand shocks (>15%), evaluate AI drift guardrails, review HITL override logs, and export final CSV datasets.",
             ],
-            "Graduate Researcher Actions": [
-                "Initialize sandbox environment at 0% demand shift and record initial baseline metrics.",
-                "Apply $\pm 15\%$ demand shocks via sidebar slider; log HPOR, LPR, and flexing impacts.",
-                "Switch channel strategies between OTA and direct push; record net margin variances.",
-                "Execute final extreme shock runs (>15%), compile anomaly logs, and export session CSVs.",
+            "Detailed Instructions & Deliverables": [
+                "Review baseline metrics in Module 1. Ensure all sidebar states are stable. Deliverable: Signed baseline validation checklist.",
+                "Toggle 'Cross-Departmental Labor Flexing' on high-compression days. Record department headcount adjustments in Module 3 table.",
+                "Adjust 'Distribution Channel Strategy' settings in sidebar. Analyze Net RevPAR variance and commission friction in Module 2.",
+                "Test system reaction under extreme stress. Confirm automated locks trigger correctly when guardrails are enabled. Deliverable: Final audit report & CSV export.",
             ],
         }
     )
-    st.table(monthly_schedule_df)
+    st.table(master_schedule_df)
+
+    # CSV Download for the Master Schedule Dataset
+    schedule_csv = master_schedule_df.to_csv(index=False).encode("utf-8")
+    st.download_button(
+        label="📥 Download 4-Month Master Schedule Dataset (CSV)",
+        data=schedule_csv,
+        file_name="marec_insights_4_month_master_schedule.csv",
+        mime="text/csv",
+    )
 
 
 # --- MODULE 1: EXECUTIVE OVERVIEW ---
