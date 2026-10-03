@@ -19,7 +19,9 @@ if "channel_mix" not in st.session_state:
 if "labor_flexing" not in st.session_state:
     st.session_state.labor_flexing = False
 if "active_scenario" not in st.session_state:
-    st.session_state.active_scenario = "Baseline Operations"
+    st.session_state.active_scenario = (
+        "Month 1: Baseline Calibration & Telemetry Setup"
+    )
 
 # --- SIDEBAR: AURORA CONTROL CENTER ---
 st.sidebar.header("🏨 Aurora Control Center")
@@ -55,34 +57,41 @@ st.sidebar.caption(
 )
 
 st.sidebar.markdown("---")
-st.sidebar.subheader("⚡ Team Training Scenarios")
-st.sidebar.markdown("*Select a mission to brief your research team:*")
+st.sidebar.subheader("⚡ 4-Month Operational Phase Presets")
+st.sidebar.markdown("*Select a phase to brief your research team:*")
 
 col_p1, col_p2 = st.sidebar.columns(2)
-if col_p1.button("🚨 Day 1 Overtime"):
+if col_p1.button("📅 Month 1: Baseline"):
+    st.session_state.demand_shift = 0
+    st.session_state.labor_flexing = False
+    st.session_state.ai_guardrails = True
+    st.session_state.active_scenario = (
+        "Month 1: Baseline Calibration & Telemetry Setup"
+    )
+    st.rerun()
+
+if col_p2.button("👷 Month 2: Workforce"):
     st.session_state.demand_shift = 18
     st.session_state.labor_flexing = False
     st.session_state.ai_guardrails = False
-    st.session_state.active_scenario = "Day 1 Overtime Crisis"
-    st.rerun()
-
-if col_p2.button("💰 Rev. Leak"):
-    st.session_state.channel_mix = "OTA Dependent Compression"
-    st.session_state.demand_shift = 5
-    st.session_state.active_scenario = "Module 2 Revenue Leak Audit"
+    st.session_state.active_scenario = (
+        "Month 2: Workforce & Labor Stress-Testing"
+    )
     st.rerun()
 
 col_p3, col_p4 = st.sidebar.columns(2)
-if col_p3.button("🏗️ Supply Shock"):
-    st.session_state.demand_shift = -15
-    st.session_state.ai_guardrails = True
-    st.session_state.active_scenario = "Module 3 Supply Shock"
+if col_p3.button("💰 Month 3: Revenue"):
+    st.session_state.channel_mix = "OTA Dependent Compression"
+    st.session_state.demand_shift = 5
+    st.session_state.active_scenario = (
+        "Month 3: Revenue & Channel Margin Optimization"
+    )
     st.rerun()
 
-if col_p4.button("🤖 AI Crash"):
+if col_p4.button("🤖 Month 4: AI Audit"):
     st.session_state.demand_shift = 22
     st.session_state.ai_guardrails = False
-    st.session_state.active_scenario = "Module 4 Algorithm Crash"
+    st.session_state.active_scenario = "Month 4: AI Governance & Final Audit"
     st.rerun()
 
 st.sidebar.markdown("---")
@@ -139,53 +148,63 @@ st.image(
     use_container_width=True,
 )
 
-# --- ENGAGING MISSION BRIEFING BOX ---
-st.markdown(f"### 🎯 Active Mission Briefing: `{st.session_state.active_scenario}`")
+# --- DETAILED 4-MONTH OPERATIONAL MISSION BRIEFING ---
+st.markdown(
+    f"### 🎯 Active Mission Briefing: `{st.session_state.active_scenario}`"
+)
 
-if st.session_state.active_scenario == "Day 1 Overtime Crisis":
-    st.error(
-        """
-        **Situation Report (Maria's Crisis):** Unchecked midweek convention compression has pushed occupancy up by 18%. Because scheduling is based on static guesses rather than departures, overtime is surging and housekeeping hours per occupied room (HPOR) are out of control.
-        * **Your Team Instructions:** 
-          1. Navigate to **Module 3 (Workforce Intelligence)**.
-          2. Observe how LPR and HPOR spike when labor flexing is disabled.
-          3. Toggle **Cross-Departmental Labor Flexing** *ON* in the sidebar to simulate F&B staff assisting housekeeping and record the recovery!
-        """
-    )
-elif st.session_state.active_scenario == "Module 2 Revenue Leak Audit":
-    st.warning(
-        """
-        **Situation Report (Elena's Audit):** Average Daily Rate (ADR) looks strong, but gross operating profits are slipping. High OTA reliance is quietly siphoning property margins.
-        * **Your Team Instructions:**
-          1. Navigate to **Module 2 (Net RevPAR & Revenue Audit)**.
-          2. Examine the channel mix chart to identify commission leakage.
-          3. Switch the sidebar distribution strategy to **Aggressive Direct Push** and observe how Net RevPAR recovers without touching room rates.
-        """
-    )
-elif st.session_state.active_scenario == "Module 3 Supply Shock":
-    st.info(
-        """
-        **Situation Report (Devon's Scenario Shift):** Competing luxury towers have opened nearby, creating a negative demand shock (-15%). Management is tempted to discount rates blindly.
-        * **Your Team Instructions:**
-          1. Navigate to **Module 1 (Executive Overview)** or **Module 3**.
-          2. Study the demand forecast curve under negative compression.
-          3. Ensure AI Guardrails remain enabled to protect rate integrity against elastic demand destruction.
-        """
-    )
-elif st.session_state.active_scenario == "Module 4 Algorithm Crash":
-    st.error(
-        """
-        **Situation Report (Priya's Crucible):** A sudden group cancellation caused an automated AI batch job to slash Thursday's rates and labor by 22% overnight without human review.
-        * **Your Team Instructions:**
-          1. Navigate to **Module 4 (AI Governance & Stress-Testing)**.
-          2. Check the Live Governance Audit Log to review the HITL (Human-in-the-Loop) safety locks.
-          3. Export the simulation state CSV to log the override variance for executive review.
-        """
-    )
-else:
+if (
+    st.session_state.active_scenario
+    == "Month 1: Baseline Calibration & Telemetry Setup"
+):
     st.success(
         """
-        **Situation Report (Baseline Operations):** The 400-room Aurora Mirage property is operating under stable conditions. Use this state to calibrate initial telemetry before executing stress tests.
+        **Status Report:** Property telemetry is online. We are establishing initial operational baselines for a 400-room luxury inventory with zero external demand shocks ($0\\%$ shift).
+        * **Team Action Plan (09:00 - 11:00 Daily):**
+          1. Navigate to **Module 1 (Executive Overview)** and verify baseline occupancy is locked at $85\\%$.
+          2. Check PMS, RMS, and HRIS integration sync across modules.
+        * **Key Insights to Evaluate:** Confirm that baseline headcount, ADR ($\$250$), and GOPPAR ($\$94.20$) align correctly before introducing market friction.
+        * **Mandatory Deliverable:** Signed Baseline Telemetry Verification Sign-off.
+        """
+    )
+elif (
+    st.session_state.active_scenario
+    == "Month 2: Workforce & Labor Stress-Testing"
+):
+    st.error(
+        """
+        **Status Report (Maria's Crisis):** Unchecked midweek convention compression has pushed demand up by $+18\\%$. Static scheduling has triggered runaway overtime and inflated HPOR.
+        * **Team Action Plan (09:30 - 11:30 Daily):**
+          1. Navigate to **Module 3 (Workforce Intelligence)** to evaluate LPR and HPOR.
+          2. Toggle **Cross-Departmental Labor Flexing** *ON* in the sidebar to allow F&B staff to absorb housekeeping turnover.
+        * **Key Insights to Evaluate:** Observe how departmental headcount shifts and watch HPOR drop from $2.5$ to $2.1$ hours.
+        * **Mandatory Deliverable:** Departmental Labor & Headcount Variance Sheet.
+        """
+    )
+elif (
+    st.session_state.active_scenario
+    == "Month 3: Revenue & Channel Margin Optimization"
+):
+    st.warning(
+        """
+        **Status Report (Elena's Audit):** ADR is climbing, but gross operating profits are stagnant due to heavy third-party OTA dependence.
+        * **Team Action Plan (10:00 - 12:00 Daily):**
+          1. Navigate to **Module 2 (Net RevPAR & Revenue Audit)**.
+          2. Review the channel mix breakdown and switch the sidebar strategy from *OTA Dependent Compression* to **Aggressive Direct Push**.
+        * **Key Insights to Evaluate:** Measure how net asset profitability changes when commission leakage drops from $18\\%$ to $4\\%$.
+        * **Mandatory Deliverable:** Channel Profitability & Net RevPAR Audit Report.
+        """
+    )
+elif st.session_state.active_scenario == "Month 4: AI Governance & Final Audit":
+    st.error(
+        """
+        **Status Report (Priya's Crucible):** Extreme market shocks ($+22\\%$ demand shift) with AI Guardrails disabled have caused automated batch jobs to misinterpret cancellations and execute unreviewed pricing cuts.
+        * **Team Action Plan (10:30 - 12:00 Daily):**
+          1. Navigate to **Module 4 (AI Governance & Stress-Testing)**.
+          2. Verify the red HITL (Human-in-the-Loop) error alerts triggered by variance ceiling breaches.
+          3. Click the button to **Download Current Simulation State (CSV)**.
+        * **Key Insights to Evaluate:** Audit unreviewed overrides and verify the necessity of strict algorithmic guardrails.
+        * **Mandatory Deliverable:** Final Executive AI Governance Audit Deck & CSV Audit Log.
         """
     )
 
