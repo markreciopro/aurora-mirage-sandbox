@@ -59,7 +59,7 @@ st.sidebar.caption(
 st.sidebar.markdown("---")
 st.sidebar.subheader("⚡ 4-Month Operational Phase Presets")
 st.sidebar.markdown(
-    "*Click a phase to instantly configure parameters & load instructions:*"
+    "👉 **Click a phase button below** to instantly configure parameters & load instructions:"
 )
 
 col_p1, col_p2 = st.sidebar.columns(2)
@@ -171,13 +171,17 @@ if (
 ):
     st.success(
         """
-        **Status Report:** Property telemetry is online with zero market friction. We are locking in initial operational baselines for the 400-room luxury inventory.
-        * **Required Sidebar Settings:** Set **Market Demand Shift** to `0%`, **AI Guardrails** to `ON`, **Channel Strategy** to **`Balanced (Direct/OTA)`**, and keep **Cross-Departmental Labor Flexing** `OFF` to establish standard department boundaries.
-        * **Step-by-Step Team Instructions:**
-          1. Navigate to **Module 1 (Executive Overview)** and verify baseline occupancy is locked at $85\\%$.
-          2. Check that PMS, RMS, and HRIS telemetry sync correctly across systems.
-        * **Insights to Evaluate:** Record baseline ADR ($\$250$), RevPAR ($\$212.50$), GOPPAR ($\$94.20$), and standard housekeeping HPOR ($2.5\\text{ hrs}$) before introducing volatility.
-        * **Mandatory Deliverable:** Signed Baseline Telemetry Verification Sign-off.
+        **🟢 Status Report:** Property telemetry is online with zero market friction. We are locking in initial operational baselines for the 400-room luxury inventory.
+        * **👉 Required Sidebar Settings:** 
+          * Set **Market Demand Shift** slider to **`0%`**
+          * Ensure **AI Guardrails** toggle is **`ON`**
+          * Set **Distribution Channel Strategy** dropdown to **`Balanced (Direct/OTA)`**
+          * Ensure **Cross-Departmental Labor Flexing** toggle is **`OFF`**
+        * **👇 Step-by-Step Team Instructions:**
+          1. **`➡️`** Navigate to **Module 1 (Executive Overview)** in the sidebar dropdown above and verify baseline occupancy is locked at **`85%`**.
+          2. **`➡️`** Check that PMS, RMS, and HRIS telemetry sync correctly across systems.
+        * **📊 Insights to Evaluate:** Record baseline ADR ($\$250$), RevPAR ($\$212.50$), GOPPAR ($\$94.20$), and standard housekeeping HPOR ($2.5\\text{ hrs}$) before introducing volatility.
+        * **📝 Mandatory Deliverable:** Signed Baseline Telemetry Verification Sign-off.
         """
     )
 elif (
@@ -186,15 +190,18 @@ elif (
 ):
     st.error(
         """
-        **Status Report (Maria's Crisis):** Midweek convention compression has driven demand up by $+18\\%$. Static scheduling is failing, causing runaway overtime and surging Hours Per Occupied Room (HPOR).
-        * **Required Sidebar Settings:** Set **Market Demand Shift** to `+18%`, keep **Channel Strategy** on **`Balanced (Direct/OTA)`**, and toggle **Cross-Departmental Labor Flexing** `OFF` initially to observe the operational bottleneck.
-        * **Step-by-Step Team Instructions (Labor Flexing Execution Protocol):**
-          1. Navigate to **Module 3 (Workforce Intelligence)** to inspect department headcounts and bloated overtime metrics.
-          2. Note how housekeeping is overwhelmed by the $+18\\%$ compression surge, driving HPOR above the $2.5$-hour ceiling.
-          3. *Active Intervention:* Toggle **Cross-Departmental Labor Flexing** `ON` in the sidebar. This activates standard Standard Operating Procedures (SOPs) authorizing cross-trained Food & Beverage support staff to step in and assist housekeeping during morning room-turnover windows.
-          4. Observe the metrics instantly adjust: HPOR drops from $2.5$ to an efficient $2.1$ hours, and labor cost percentage (LPR) stabilizes below $30\\%$.
-        * **Insights to Evaluate:** Prove that cross-departmental labor sharing absorbs demand volatility without requiring emergency external hiring or unbudgeted overtime pay.
-        * **Mandatory Deliverable:** Departmental Labor & Headcount Variance Sheet.
+        **🔴 Status Report (Maria's Crisis):** Midweek convention compression has driven demand up by **`+18%`**. Static scheduling is failing, causing runaway overtime and surging Hours Per Occupied Room (HPOR).
+        * **👉 Required Sidebar Settings:** 
+          * Set **Market Demand Shift** slider to **`+18%`**
+          * Keep **Channel Strategy** set to **`Balanced (Direct/OTA)`**
+          * Initially toggle **Cross-Departmental Labor Flexing** **`OFF`** to observe the operational bottleneck.
+        * **👇 Step-by-Step Team Instructions:**
+          1. **`➡️️`** Navigate to **Module 3 (Workforce Intelligence)** to inspect department headcounts and bloated overtime metrics.
+          2. **`➡️`** Note how housekeeping is overwhelmed by the $+18\\%$ compression surge, driving HPOR above the $2.5$-hour ceiling.
+          3. **`⚡ ACTION STEP:`** Toggle **Cross-Departmental Labor Flexing** **`ON`** in the sidebar. This activates SOPs authorizing cross-trained Food & Beverage support staff to step in and assist housekeeping during morning room-turnover windows.
+          4. **`➡️`** Observe the metrics instantly adjust: HPOR drops from $2.5$ to an efficient **`2.1 hours`**, and labor cost percentage (LPR) stabilizes below **`30%`**.
+        * **📊 Insights to Evaluate:** Prove that cross-departmental labor sharing absorbs demand volatility without requiring emergency external hiring or unbudgeted overtime pay.
+        * **📝 Mandatory Deliverable:** Departmental Labor & Headcount Variance Sheet.
         """
     )
 elif (
@@ -203,28 +210,35 @@ elif (
 ):
     st.warning(
         """
-        **Status Report (Elena's Audit):** Average Daily Rate is climbing, but gross operating profits remain flat due to heavy OTA commission leakage.
-        * **Required Sidebar Settings:** Switch **Channel Strategy** to `OTA Dependent Compression`, set **Demand Shift** to `+5%`, and keep **Cross-Departmental Labor Flexing** `ON` to manage labor efficiency during gross revenue shifts.
-        * **Step-by-Step Team Instructions:**
-          1. Navigate to **Module 2 (Net RevPAR & Revenue Audit)**.
-          2. Analyze the channel mix chart to witness commission siphoning eroding property margins.
-          3. *Correction Step:* Change the sidebar channel strategy to **Aggressive Direct Push** or back to **`Balanced (Direct/OTA)`** to observe how Net RevPAR recovers immediately without raising room rates.
-        * **Insights to Evaluate:** Prove to ownership that distribution cost management and labor flexing together protect net asset profitability better than blind rate hikes.
-        * **Mandatory Deliverable:** Channel Profitability & Net RevPAR Audit Report.
+        **🟡 Status Report (Elena's Audit):** Average Daily Rate is climbing, but gross operating profits remain flat due to heavy OTA commission leakage.
+        * **👉 Required Sidebar Settings:** 
+          * Switch **Distribution Channel Strategy** to **`OTA Dependent Compression`**
+          * Set **Market Demand Shift** slider to **`+5%`**
+          * Ensure **Cross-Departmental Labor Flexing** is toggled **`ON`**
+        * **👇 Step-by-Step Team Instructions:**
+          1. **`➡️`** Navigate to **Module 2 (Net RevPAR & Revenue Audit)** in the sidebar dropdown.
+          2. **`➡️`** Analyze the channel mix chart to witness commission siphoning eroding property margins.
+          3. **`⚡ CORRECTION STEP:`** Change the sidebar channel strategy back to **`Balanced (Direct/OTA)`** or **`Aggressive Direct Push`** to observe how Net RevPAR recovers immediately without raising room rates.
+        * **📊 Insights to Evaluate:** Prove to ownership that distribution cost management and labor flexing together protect net asset profitability better than blind rate hikes.
+        * **📝 Mandatory Deliverable:** Channel Profitability & Net RevPAR Audit Report.
         """
     )
 elif st.session_state.active_scenario == "Month 4: AI Governance & Final Audit":
     st.error(
         """
-        **Status Report (Priya's Crucible):** Extreme market shocks ($+22\\%$ demand shift) with AI Guardrails `OFF` have allowed an automated batch job to misinterpret group cancellations and execute unreviewed pricing cuts.
-        * **Required Sidebar Settings:** Set **Demand Shift** to `+22%`, keep **Channel Strategy** on **`Balanced (Direct/OTA)`**, ensure **Labor Flexing** is `ON`, and ensure **AI Guardrails** is toggled `OFF` to witness the algorithmic crash.
-        * **Step-by-Step Team Instructions:**
-          1. Navigate to **Module 4 (AI Governance & Stress-Testing)**.
-          2. Review the live governance alert logs showing safety ceiling breaches.
-          3. Turn AI Guardrails back `ON` to see Human-in-the-Loop (HITL) locks engage.
-          4. Click **Download Current Simulation State (CSV)** at the bottom of the module.
-        * **Insights to Evaluate:** Validate that automation requires strict human oversight and reason-code feedback loops to prevent algorithmic drift.
-        * **Mandatory Deliverable:** Final Executive AI Governance Audit Deck & CSV Audit Log.
+        **🔴 Status Report (Priya's Crucible):** Extreme market shocks (**`+22%`** demand shift) with AI Guardrails **`OFF`** have allowed an automated batch job to misinterpret group cancellations and execute unreviewed pricing cuts.
+        * **👉 Required Sidebar Settings:** 
+          * Set **Market Demand Shift** slider to **`+22%`**
+          * Keep **Channel Strategy** on **`Balanced (Direct/OTA)`**
+          * Ensure **Labor Flexing** is **`ON`**
+          * Toggle **AI Algorithmic Drift Guardrails** **`OFF`** to witness the algorithmic crash.
+        * **👇 Step-by-Step Team Instructions:**
+          1. **`➡️`** Navigate to **Module 4 (AI Governance & Stress-Testing)** in the sidebar.
+          2. **`➡️`** Review the live governance alert logs showing safety ceiling breaches.
+          3. **`⚡ FIX STEP:`** Turn AI Guardrails back **`ON`** to see Human-in-the-Loop (HITL) locks engage.
+          4. **`➡️`** Click **Download Current Simulation State (CSV)** at the bottom of the module.
+        * **📊 Insights to Evaluate:** Validate that automation requires strict human oversight and reason-code feedback loops to prevent algorithmic drift.
+        * **📝 Mandatory Deliverable:** Final Executive AI Governance Audit Deck & CSV Audit Log.
         """
     )
 
