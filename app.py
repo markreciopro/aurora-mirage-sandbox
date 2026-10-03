@@ -18,8 +18,8 @@ if "channel_mix" not in st.session_state:
 if "labor_flexing" not in st.session_state:
     st.session_state.labor_flexing = False
 
-# --- SIDEBAR: CONTROLS & INSTRUCTIONS ---
-st.sidebar.header("🏨 Aurora Mirage Control Center")
+# --- SIDEBAR: AURORA CONTROL CENTER ---
+st.sidebar.header("🏨 Aurora Control Center")
 st.sidebar.markdown(
     "*400-Room Luxury Property Simulation | MAREC Insights*"
 )
@@ -33,11 +33,11 @@ property_choice = st.sidebar.selectbox(
     ],
 )
 
-# Module Selection (Includes Polished Step 1 Protocol & Schedule)
+# Module Selection
 module_choice = st.sidebar.selectbox(
     "Select Intelligence Module",
     [
-        "Step 1: Testing Protocol & 4-Month Master Schedule",
+        "Step 1: Control Center Guide & 4-Month Daily Schedule",
         "Module 1: Executive Overview & Daily Workflow",
         "Module 2: Net RevPAR & Revenue Audit",
         "Module 3: Workforce Intelligence & Labor Optimization",
@@ -105,93 +105,89 @@ else:
 # Compute dynamic scaling factors based on demand shift
 demand_multiplier = 1 + (st.session_state.demand_shift / 100.0)
 
-# --- STEP 1: TESTING PROTOCOL & 4-MONTH MASTER SCHEDULE ---
-if module_choice == "Step 1: Testing Protocol & 4-Month Master Schedule":
-    st.title("🎯 Step 1: Test and Interact with the Live Sandbox Controls")
+# --- STEP 1: CONTROL CENTER GUIDE & 4-MONTH DAILY SCHEDULE ---
+if module_choice == "Step 1: Control Center Guide & 4-Month Daily Schedule":
+    st.title("🎯 Step 1: Aurora Control Center Guide & Daily Action Blueprint")
     st.markdown(
-        "**Core Objective:** Establish operational control parameters and simulate real-time decision-making within the simulated 400-room Aurora Mirage luxury property."
+        "**Core Objective:** Master the sidebar **Aurora Control Center** parameters and execute a structured, day-by-day operational testing protocol across the 400-room Aurora Mirage property."
     )
 
     st.markdown("---")
 
-    # Detailed Testing Instructions Layout
+    # Detailed Control Center Breakdown
     col1, col2 = st.columns(2)
 
     with col1:
-        st.subheader("👷 Testing Workforce & Labor Metrics")
+        st.subheader("🎛️ How to Use the Aurora Control Center")
         st.markdown(
             """
-        * **Demand-Driven Scheduling:** Simulate high-compression days (e.g., Thursday arrivals and departures) to test demand-driven scheduling instead of fixed headcount guesses.
-        * **Foundational Labor KPIs:** Monitor **Labor Cost Percentage of Revenue (LPR)**, **Hours Per Occupied Room (HPOR)**, and **Revenue Per Available Labor Hour (REVPALH)** across operational shifts.
-        * **Cross-Departmental Flex Protocols:** Test cross-departmental flex protocols where front-of-house and F&B staff support housekeeping during turnover spikes before overtime is approved.
-        """
-        )
-
-        st.subheader("💰 Evaluating Revenue & Channel Mix")
-        st.markdown(
-            """
-        * **Margin Leak Identification:** Track ADR and RevPAR alongside TRevPAR and Net RevPAR to identify margin leaks caused by heavy OTA commissions.
-        * **Channel Shift Simulations:** Switch distribution channel strategies toward direct bookings to observe immediate margin protection without altering base room rates.
+        * **Market Demand Shift Slider:** Drag between $-25\%$ and $+25\%$ to simulate group cancellations or heavy convention compression.
+        * **AI Algorithmic Drift Guardrails:** Toggle ON to enforce strict $15\%$ variance limits that trigger Human-In-The-Loop (HITL) locks.
+        * **Distribution Channel Strategy:** Switch between *Balanced*, *Aggressive Direct Push*, and *OTA Dependent Compression* to analyze commission margin leaks.
+        * **Cross-Departmental Labor Flexing:** Toggle ON to let F&B staff support housekeeping during turnover spikes, lowering Hours Per Occupied Room (HPOR).
         """
         )
 
     with col2:
-        st.subheader("🤖 Simulating AI Governance & Guardrails")
+        st.subheader("👥 Two-Party Daily Execution Workflow")
         st.markdown(
             """
-        * **Variance Limit Testing:** Test automated rate and scheduling recommendations against strict variance limits (e.g., max percentage changes allowed without human sign-off).
-        * **HITL Escalation Pathways:** Trigger out-of-bounds algorithmic actions (such as sharp rate drops from cancelled group blocks) to test human-in-the-loop escalation pathways and override logging.
+        * **Daily Standup (10 Mins):** Principal Consultant sets the target market shock parameter in the sidebar. Graduate researcher runs the simulation.
+        * **Data Logging:** Record changes in ADR, RevPAR, GOPPAR, and LPR across Modules 1 through 3.
+        * **Audit & Export:** Use Module 4 to review AI drift logs and export session CSV datasets for client reporting.
         """
-        )
-
-        st.info(
-            "💡 **Two-Party Execution Tip:** Use the sidebar controls to test parameters together during daily standups, then check Modules 1–4 to observe telemetry ripples and export audit logs."
         )
 
     st.markdown("---")
     st.subheader(
-        "📅 4-Month Master Execution Dataset: Schedule, Timeline & Action Plan"
+        "📅 4-Month Master Daily Operational Schedule & Example Scenarios"
     )
     st.markdown(
-        "The following structured dataset outlines the exact schedule, timeline, responsible parties, and detailed instructions for executing the 4-month property evaluation sprint."
+        "The following dataset provides granular daily instructions, responsible parties, concrete operational examples, and tangible deliverables for each phase."
     )
 
-    master_schedule_df = pd.DataFrame(
+    master_daily_df = pd.DataFrame(
         {
-            "Schedule / Timeline": [
-                "Month 1: Baseline & Setup",
-                "Month 2: Workforce Stress-Testing",
-                "Month 3: Revenue & Channel Optimization",
+            "Month & Timeline": [
+                "Month 1: Baseline Calibration & Control Setup",
+                "Month 2: Workforce & Labor Stress-Testing",
+                "Month 3: Revenue & Channel Margin Optimization",
                 "Month 4: AI Governance & Final Audit",
+            ],
+            "Daily Operational Focus": [
+                "Establish 0% demand baseline; verify PMS, RMS, and HRIS telemetry sync in Modules 1–3.",
+                "Execute daily demand shocks ($\pm 10\\%$ to $\pm 20\\%$); test labor flexing protocols under compression.",
+                "Simulate channel strategy shifts daily; audit net commission leakage and direct booking acquisition costs.",
+                "Trigger extreme market shocks ($>15\\%$) with guardrails ON/OFF; review HITL overrides and export CSVs.",
             ],
             "Responsible Party": [
                 "Principal Consultant & Researcher",
-                "Graduate Researcher (Execution)",
+                "Graduate Researcher (Daily Execution)",
                 "Principal Consultant & Researcher",
-                "Principal Consultant (Sign-Off)",
+                "Principal Consultant (Final Sign-Off)",
             ],
-            "Action Needed": [
-                "Initialize digital twin parameters, verify PMS/HRIS data stream baseline integrity, and record 0% demand shift benchmarks.",
-                "Execute $\pm 15\%$ demand shocks via sidebar slider; test cross-departmental flexing protocols and log HPOR/LPR metric shifts.",
-                "Simulate distribution channel shifts (OTA dependent vs. Direct Push); evaluate net margins and commission margin leaks.",
-                "Trigger extreme demand shocks (>15%), evaluate AI drift guardrails, review HITL override logs, and export final CSV datasets.",
+            "Concrete Example & Action": [
+                "**Example:** Leave Demand Shift at $0\\%$, AI Guardrails ON. *Action:* Inspect Module 1 occupancy ($85\\%$) and baseline headcount tables in Module 3.",
+                "**Example:** Set Demand Shift to $+18\\%$, toggle Labor Flexing ON. *Action:* Observe HPOR drop from $2.5$ hrs to $2.1$ hrs and note F&B headcount reallocation.",
+                "**Example:** Switch Channel Strategy to *OTA Dependent Compression*. *Action:* Check Module 2 to verify Net RevPAR drop due to $18\\%$ OTA commissions.",
+                "**Example:** Set Demand Shift to $+20\\%$ with Guardrails ON. *Action:* Verify automated system lock triggers in Module 4 and export audit log CSV.",
             ],
-            "Detailed Instructions & Deliverables": [
-                "Review baseline metrics in Module 1. Ensure all sidebar states are stable. Deliverable: Signed baseline validation checklist.",
-                "Toggle 'Cross-Departmental Labor Flexing' on high-compression days. Record department headcount adjustments in Module 3 table.",
-                "Adjust 'Distribution Channel Strategy' settings in sidebar. Analyze Net RevPAR variance and commission friction in Module 2.",
-                "Test system reaction under extreme stress. Confirm automated locks trigger correctly when guardrails are enabled. Deliverable: Final audit report & CSV export.",
+            "Deliverables & Output": [
+                "Signed Baseline Telemetry Validation Checklist.",
+                "Workforce Headcount & LPR Variance Log Sheet.",
+                "Channel Profitability & Net RevPAR Audit Deck.",
+                "Final Governance Audit Report & CSV Export.",
             ],
         }
     )
-    st.table(master_schedule_df)
+    st.table(master_daily_df)
 
-    # CSV Download for the Master Schedule Dataset
-    schedule_csv = master_schedule_df.to_csv(index=False).encode("utf-8")
+    # CSV Download for Master Daily Schedule
+    daily_csv = master_daily_df.to_csv(index=False).encode("utf-8")
     st.download_button(
-        label="📥 Download 4-Month Master Schedule Dataset (CSV)",
-        data=schedule_csv,
-        file_name="marec_insights_4_month_master_schedule.csv",
+        label="📥 Download 4-Month Daily Operational Schedule (CSV)",
+        data=daily_csv,
+        file_name="aurora_mirage_4_month_daily_schedule.csv",
         mime="text/csv",
     )
 
