@@ -196,7 +196,7 @@ elif (
           * Keep **Channel Strategy** set to **`Balanced (Direct/OTA)`**
           * Initially toggle **Cross-Departmental Labor Flexing** **`OFF`** to observe the operational bottleneck.
         * **👇 Step-by-Step Team Instructions:**
-          1. **`➡️️`** Navigate to **Module 3 (Workforce Intelligence)** to inspect department headcounts and bloated overtime metrics.
+          1. **`➡️`** Navigate to **Module 3 (Workforce Intelligence)** to inspect department headcounts and bloated overtime metrics.
           2. **`➡️`** Note how housekeeping is overwhelmed by the $+18\\%$ compression surge, driving HPOR above the $2.5$-hour ceiling.
           3. **`⚡ ACTION STEP:`** Toggle **Cross-Departmental Labor Flexing** **`ON`** in the sidebar. This activates SOPs authorizing cross-trained Food & Beverage support staff to step in and assist housekeeping during morning room-turnover windows.
           4. **`➡️`** Observe the metrics instantly adjust: HPOR drops from $2.5$ to an efficient **`2.1 hours`**, and labor cost percentage (LPR) stabilizes below **`30%`**.
@@ -216,7 +216,7 @@ elif (
           * Set **Market Demand Shift** slider to **`+5%`**
           * Ensure **Cross-Departmental Labor Flexing** is toggled **`ON`**
         * **👇 Step-by-Step Team Instructions:**
-          1. **`➡️`** Navigate to **Module 2 (Net RevPAR & Revenue Audit)** in the sidebar dropdown.
+          1. **`➡️️`** Navigate to **Module 2 (Net RevPAR & Revenue Audit)** in the sidebar dropdown.
           2. **`➡️`** Analyze the channel mix chart to witness commission siphoning eroding property margins.
           3. **`⚡ CORRECTION STEP:`** Change the sidebar channel strategy back to **`Balanced (Direct/OTA)`** or **`Aggressive Direct Push`** to observe how Net RevPAR recovers immediately without raising room rates.
         * **📊 Insights to Evaluate:** Prove to ownership that distribution cost management and labor flexing together protect net asset profitability better than blind rate hikes.
@@ -300,10 +300,22 @@ if module_choice == "Step 1: 4-Month Daily Time Schedule & Deliverables":
                 "Month 4: AI Governance & Final Audit",
             ],
             "Time-Stamped Daily Schedule": [
-                "**09:00 - 09:30:** System Sync & Init\n**09:30 - 11:00:** Baseline Audit",
-                "**09:00 - 09:30:** Shock Setup\n**09:30 - 11:30:** Labor Flexing Test",
-                "**09:00 - 10:00:** Channel Toggle\n**10:00 - 12:00:** Commission Audit",
-                "**09:00 - 10:30:** Extreme Shock Test\n**10:30 - 12:00:** HITL & CSV Export",
+                (
+                    "• **09:00 - 09:30 AM:** System Telemetry Sync & PMS/RMS Init\n•"
+                    " **09:30 - 11:00 AM:** Baseline Occupancy & ADR Audit"
+                ),
+                (
+                    "• **09:00 - 09:30 AM:** Market Shock Injection (+18% Demand)\n•"
+                    " **09:30 - 11:30 AM:** Labor Flexing & HPOR Stress Test"
+                ),
+                (
+                    "• **09:00 - 10:00 AM:** Channel Mix Strategy Toggle\n•"
+                    " **10:00 - 12:00 PM:** OTA Commission Leakage Audit"
+                ),
+                (
+                    "• **09:00 - 10:30 AM:** Extreme Shock Test (+22% & AI OFF)\n•"
+                    " **10:30 - 12:00 PM:** HITL Lock Engagement & CSV Export"
+                ),
             ],
             "Daily Deliverable": [
                 "Signed Baseline Telemetry Verification Sign-off.",
@@ -494,7 +506,7 @@ elif module_choice == "Module 3: Workforce Intelligence & Labor Optimization":
         )
         st.metric("Cross-Flex Protocol", flex_status)
 
-    st.markdown("### ⚙️ Departmental Headcount Allocation Table")
+    st.markdown("### ⚙️️ Departmental Headcount Allocation Table")
     dept_data = pd.DataFrame(
         {
             "Department": [
