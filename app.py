@@ -18,7 +18,7 @@ if "channel_mix" not in st.session_state:
 if "labor_flexing" not in st.session_state:
     st.session_state.labor_flexing = False
 
-# --- SIDEBAR: CONTROLS & TEAM INSTRUCTIONS ---
+# --- SIDEBAR: CONTROLS & INSTRUCTIONS ---
 st.sidebar.header("🏨 Aurora Mirage Control Center")
 st.sidebar.markdown(
     "*400-Room Luxury Property Simulation | MAREC Insights*"
@@ -33,10 +33,11 @@ property_choice = st.sidebar.selectbox(
     ],
 )
 
-# Module Selection
+# Module Selection (Includes Step 1 Protocol & Schedule)
 module_choice = st.sidebar.selectbox(
     "Select Intelligence Module",
     [
+        "Step 1: Testing Protocol & Daily Schedule",
         "Module 1: Executive Overview & Daily Workflow",
         "Module 2: Net RevPAR & Revenue Audit",
         "Module 3: Workforce Intelligence & Labor Optimization",
@@ -79,8 +80,8 @@ st.session_state.labor_flexing = st.sidebar.toggle(
 )
 
 st.sidebar.markdown("---")
-st.sidebar.subheader("👥 Research Team Guide (2-Person Sprint)")
-with st.sidebar.expander("Daily Protocol Instructions"):
+st.sidebar.subheader("👥 Research Team Guide")
+with st.sidebar.expander("2-Person Sprint Instructions"):
     st.markdown(
         """
     * **Principal Consultant / You:** Define daily stress-test scenarios, evaluate macro GOPPAR/margins, and manage HITL overrides when guardrails breach.
@@ -104,8 +105,80 @@ else:
 # Compute dynamic scaling factors based on demand shift
 demand_multiplier = 1 + (st.session_state.demand_shift / 100.0)
 
+# --- STEP 1: TESTING PROTOCOL & DAILY SCHEDULE ---
+if module_choice == "Step 1: Testing Protocol & Daily Schedule":
+    st.title("🎯 Step 1: Test and Interact with the Live Sandbox Controls")
+    st.markdown(
+        "**Core Objective:** Establish operational control parameters and simulate real-time decision-making within the simulated 400-room Aurora Mirage property."
+    )
+
+    st.markdown("---")
+
+    # Layout for instructions
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.subheader("👷 Testing Workforce & Labor Metrics")
+        st.markdown(
+            """
+        * **Demand-Driven Scheduling:** Simulate high-compression days (e.g., Thursday arrivals and departures) to test demand-driven scheduling instead of fixed headcount guesses.
+        * **Foundational Labor KPIs:** Monitor **Labor Cost Percentage of Revenue (LPR)**, **Hours Per Occupied Room (HPOR)**, and **Revenue Per Available Labor Hour (REVPALH)**.
+        * **Cross-Departmental Flex:** Test cross-departmental flex protocols where front-of-house and F&B staff support housekeeping during spikes before overtime is approved.
+        """
+        )
+
+        st.subheader("💰 Evaluating Revenue & Channel Mix")
+        st.markdown(
+            """
+        * **Margin Leak Identification:** Track ADR and RevPAR alongside TRevPAR and Net RevPAR to identify margin leaks caused by heavy OTA commissions.
+        * **Channel Shifts:** Simulate channel shifts (e.g., shifting revenue share toward direct bookings) to observe immediate margin protection without altering room rates.
+        """
+        )
+
+    with col2:
+        st.subheader("🤖 Simulating AI Governance & Guardrails")
+        st.markdown(
+            """
+        * **Variance Limit Testing:** Test automated rate and scheduling recommendations against strict variance limits (e.g., max percentage changes allowed without human sign-off).
+        * **HITL Escalation Pathways:** Trigger out-of-bounds algorithmic actions (such as sharp rate drops from cancelled group blocks) to test human-in-the-loop escalation pathways and override logging.
+        """
+        )
+
+    st.markdown("---")
+    st.subheader(
+        "📅 Recommended Daily Sprint Schedule (You & Graduate Researcher)"
+    )
+
+    schedule_data = pd.DataFrame(
+        {
+            "Sprint Day": [
+                "Day 1",
+                "Day 2",
+                "Day 3",
+                "Day 4",
+                "Day 5",
+            ],
+            "Focus Area": [
+                "Baseline Calibration",
+                "Workforce Stress-Testing",
+                "Channel Mix Optimization",
+                "AI Guardrails & HITL Testing",
+                "Synthesis & Audit Export",
+            ],
+            "Assigned Actions": [
+                "Initialize PMS/HRIS data sync with 0% demand shift and verify standard baseline metrics.",
+                "Apply +15% / -15% demand shifts to test HPOR, LPR, and cross-departmental flexing behavior.",
+                "Switch distribution channel strategies to measure net profit protection against OTA commission drag.",
+                "Trigger out-of-bounds demand shocks (>15%) to test AI governance locks and override logging.",
+                "Review cumulative audit logs, test variance reports, and export CSV session data for your case study.",
+            ],
+        }
+    )
+    st.table(schedule_data)
+
+
 # --- MODULE 1: EXECUTIVE OVERVIEW ---
-if module_choice == "Module 1: Executive Overview & Daily Workflow":
+elif module_choice == "Module 1: Executive Overview & Daily Workflow":
     st.title("📊 Module 1: Executive Overview & Daily Workflow")
     st.markdown(
         "Welcome to the **Aurora Mirage Digital Twin**. This dashboard tracks real-time synchronization across Property Management Systems (PMS), Revenue Management (RMS), and Human Resources (HRIS)."
@@ -138,7 +211,6 @@ if module_choice == "Module 1: Executive Overview & Daily Workflow":
     st.markdown("---")
     st.subheader("📈 7-Day Simulated Demand Forecast Curve")
 
-    # Generate a sample 7-day data frame responsive to the slider
     days = [
         "Monday",
         "Tuesday",
@@ -174,7 +246,6 @@ elif module_choice == "Module 2: Net RevPAR & Revenue Audit":
         "Evaluate net asset profitability by balancing channel acquisition costs and distribution fees against traditional RevPAR metrics."
     )
 
-    # Adjust calculations based on channel strategy
     ota_penalty = (
         0.18
         if st.session_state.channel_mix == "OTA Dependent Compression"
@@ -225,7 +296,6 @@ elif module_choice == "Module 3: Workforce Intelligence & Labor Optimization":
         "Monitor labor cost percentages (LPR), hours per occupied room (HPOR), and cross-departmental flexing protocols."
     )
 
-    # Labor calculations based on flexing toggle and demand
     hpor_val = round(2.5 if not st.session_state.labor_flexing else 2.1, 2)
     lpr_val = round(28.5 - (st.session_state.demand_shift * 0.2), 1)
 
@@ -314,7 +384,6 @@ elif module_choice == "Module 4: AI Governance & Stress-Testing Sandbox":
 
     st.markdown("---")
 
-    # Export CSV Feature for Research Logging
     st.subheader("📁 Research Data Export")
     export_df = pd.DataFrame(
         {
