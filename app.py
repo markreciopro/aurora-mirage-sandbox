@@ -52,7 +52,7 @@ st.sidebar.caption(
 )
 
 st.sidebar.markdown("---")
-st.sidebar.subheader("🎛️ Live Digital Twin Parameters")
+st.sidebar.subheader("🎛️️ Live Digital Twin Parameters")
 
 # Interactive Sliders & Toggles tied to session state
 st.session_state.demand_shift = st.sidebar.slider(
@@ -97,6 +97,13 @@ with st.sidebar.expander("Two-Party Execution Protocol"):
 
 
 # --- MAIN CONTENT DYNAMIC RENDERING ---
+
+# Stylized Aurora Mirage Resort Visual Header (Matching Manuscript Branding)
+st.image(
+    "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80",
+    caption="Aurora Mirage Resort & Casino — 400-Room Luxury Flagship Property | MAREC Insights Digital Twin",
+    use_container_width=True
+)
 
 # Header Banner based on state
 if st.session_state.ai_guardrails:
