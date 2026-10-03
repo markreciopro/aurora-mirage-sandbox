@@ -132,7 +132,12 @@ st.session_state.channel_mix = st.sidebar.selectbox(
 st.session_state.labor_flexing = st.sidebar.toggle(
     "Cross-Departmental Labor Flexing",
     value=st.session_state.labor_flexing,
-    help="Allows F&B support to assist housekeeping during peak turnover windows.",
+    help=(
+        "CRITICAL OPERATIONAL VALVE: When ON, permits cross-trained F&B and"
+        " public space personnel to assist housekeeping during peak morning"
+        " room turnover windows (08:00–12:00), preventing unbudgeted overtime"
+        " and stabilizing Hours Per Occupied Room (HPOR)."
+    ),
 )
 
 st.sidebar.markdown("---")
@@ -167,11 +172,11 @@ if (
     st.success(
         """
         **Status Report:** Property telemetry is online with zero market friction. We are locking in initial operational baselines for the 400-room luxury inventory.
-        * **Required Sidebar Settings:** Set **Market Demand Shift** to `0%`, **AI Guardrails** to `ON`, and **Channel Strategy** to **`Balanced (Direct/OTA)`** (maintaining an optimal distribution baseline across direct web, corporate blocks, and standard third-party channels).
+        * **Required Sidebar Settings:** Set **Market Demand Shift** to `0%`, **AI Guardrails** to `ON`, **Channel Strategy** to **`Balanced (Direct/OTA)`**, and keep **Cross-Departmental Labor Flexing** `OFF` to establish standard department boundaries.
         * **Step-by-Step Team Instructions:**
           1. Navigate to **Module 1 (Executive Overview)** and verify baseline occupancy is locked at $85\\%$.
           2. Check that PMS, RMS, and HRIS telemetry sync correctly across systems.
-        * **Insights to Evaluate:** Record baseline ADR ($\$250$), RevPAR ($\$212.50$), and GOPPAR ($\$94.20$) before introducing stress factors.
+        * **Insights to Evaluate:** Record baseline ADR ($\$250$), RevPAR ($\$212.50$), GOPPAR ($\$94.20$), and standard housekeeping HPOR ($2.5\\text{ hrs}$) before introducing volatility.
         * **Mandatory Deliverable:** Signed Baseline Telemetry Verification Sign-off.
         """
     )
@@ -181,13 +186,14 @@ elif (
 ):
     st.error(
         """
-        **Status Report (Maria's Crisis):** Midweek convention compression has driven demand up by $+18\\%$. Static scheduling is failing, causing runaway overtime and surging HPOR.
-        * **Required Sidebar Settings:** Set **Market Demand Shift** to `+18%`, keep **Channel Strategy** on **`Balanced (Direct/OTA)`**, and toggle **Cross-Departmental Labor Flexing** `OFF` initially to observe the failure.
-        * **Step-by-Step Team Instructions:**
-          1. Navigate to **Module 3 (Workforce Intelligence)**.
-          2. Observe high labor cost percentages (LPR) and bloated housekeeping hours.
-          3. *Correction Step:* Toggle **Cross-Departmental Labor Flexing** `ON` in the sidebar to let F&B staff absorb turnover. Watch HPOR drop from $2.5$ to $2.1$ hours!
-        * **Insights to Evaluate:** Verify how dynamic labor sharing eliminates unbudgeted overtime without hurting guest satisfaction.
+        **Status Report (Maria's Crisis):** Midweek convention compression has driven demand up by $+18\\%$. Static scheduling is failing, causing runaway overtime and surging Hours Per Occupied Room (HPOR).
+        * **Required Sidebar Settings:** Set **Market Demand Shift** to `+18%`, keep **Channel Strategy** on **`Balanced (Direct/OTA)`**, and toggle **Cross-Departmental Labor Flexing** `OFF` initially to observe the operational bottleneck.
+        * **Step-by-Step Team Instructions (Labor Flexing Execution Protocol):**
+          1. Navigate to **Module 3 (Workforce Intelligence)** to inspect department headcounts and bloated overtime metrics.
+          2. Note how housekeeping is overwhelmed by the $+18\\%$ compression surge, driving HPOR above the $2.5$-hour ceiling.
+          3. *Active Intervention:* Toggle **Cross-Departmental Labor Flexing** `ON` in the sidebar. This activates standard Standard Operating Procedures (SOPs) authorizing cross-trained Food & Beverage support staff to step in and assist housekeeping during morning room-turnover windows.
+          4. Observe the metrics instantly adjust: HPOR drops from $2.5$ to an efficient $2.1$ hours, and labor cost percentage (LPR) stabilizes below $30\\%$.
+        * **Insights to Evaluate:** Prove that cross-departmental labor sharing absorbs demand volatility without requiring emergency external hiring or unbudgeted overtime pay.
         * **Mandatory Deliverable:** Departmental Labor & Headcount Variance Sheet.
         """
     )
@@ -198,12 +204,12 @@ elif (
     st.warning(
         """
         **Status Report (Elena's Audit):** Average Daily Rate is climbing, but gross operating profits remain flat due to heavy OTA commission leakage.
-        * **Required Sidebar Settings:** Switch **Channel Strategy** to `OTA Dependent Compression` (simulating heavy 18% OTA reliance) and set **Demand Shift** to `+5%`.
+        * **Required Sidebar Settings:** Switch **Channel Strategy** to `OTA Dependent Compression`, set **Demand Shift** to `+5%`, and keep **Cross-Departmental Labor Flexing** `ON` to manage labor efficiency during gross revenue shifts.
         * **Step-by-Step Team Instructions:**
           1. Navigate to **Module 2 (Net RevPAR & Revenue Audit)**.
           2. Analyze the channel mix chart to witness commission siphoning eroding property margins.
           3. *Correction Step:* Change the sidebar channel strategy to **Aggressive Direct Push** or back to **`Balanced (Direct/OTA)`** to observe how Net RevPAR recovers immediately without raising room rates.
-        * **Insights to Evaluate:** Prove to ownership that distribution cost management and channel mix optimization protect net asset profitability better than blind rate hikes.
+        * **Insights to Evaluate:** Prove to ownership that distribution cost management and labor flexing together protect net asset profitability better than blind rate hikes.
         * **Mandatory Deliverable:** Channel Profitability & Net RevPAR Audit Report.
         """
     )
@@ -211,7 +217,7 @@ elif st.session_state.active_scenario == "Month 4: AI Governance & Final Audit":
     st.error(
         """
         **Status Report (Priya's Crucible):** Extreme market shocks ($+22\\%$ demand shift) with AI Guardrails `OFF` have allowed an automated batch job to misinterpret group cancellations and execute unreviewed pricing cuts.
-        * **Required Sidebar Settings:** Set **Demand Shift** to `+22%`, keep **Channel Strategy** on **`Balanced (Direct/OTA)`**, and ensure **AI Guardrails** is toggled `OFF` to witness the algorithmic crash.
+        * **Required Sidebar Settings:** Set **Demand Shift** to `+22%`, keep **Channel Strategy** on **`Balanced (Direct/OTA)`**, ensure **Labor Flexing** is `ON`, and ensure **AI Guardrails** is toggled `OFF` to witness the algorithmic crash.
         * **Step-by-Step Team Instructions:**
           1. Navigate to **Module 4 (AI Governance & Stress-Testing)**.
           2. Review the live governance alert logs showing safety ceiling breaches.
