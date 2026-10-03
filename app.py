@@ -58,7 +58,9 @@ st.sidebar.caption(
 
 st.sidebar.markdown("---")
 st.sidebar.subheader("⚡ 4-Month Operational Phase Presets")
-st.sidebar.markdown("*Select a phase to brief your research team:*")
+st.sidebar.markdown(
+    "*Click a phase to instantly configure parameters & load instructions:*"
+)
 
 col_p1, col_p2 = st.sidebar.columns(2)
 if col_p1.button("📅 Month 1: Baseline"):
@@ -96,6 +98,9 @@ if col_p4.button("🤖 Month 4: AI Audit"):
 
 st.sidebar.markdown("---")
 st.sidebar.subheader("🎛️ Live Digital Twin Parameters")
+st.sidebar.caption(
+    "👉 *Adjust these controls directly or use the phase presets above.*"
+)
 
 # Interactive Sliders & Toggles tied to session state
 st.session_state.demand_shift = st.sidebar.slider(
@@ -148,7 +153,7 @@ st.image(
     use_container_width=True,
 )
 
-# --- DETAILED 4-MONTH OPERATIONAL MISSION BRIEFING ---
+# --- USER-FRIENDLY ACTIVE MISSION BRIEFING & PARAMETER GUIDE ---
 st.markdown(
     f"### 🎯 Active Mission Briefing: `{st.session_state.active_scenario}`"
 )
@@ -159,11 +164,12 @@ if (
 ):
     st.success(
         """
-        **Status Report:** Property telemetry is online. We are establishing initial operational baselines for a 400-room luxury inventory with zero external demand shocks ($0\\%$ shift).
-        * **Team Action Plan (09:00 - 11:00 Daily):**
+        **Status Report:** Property telemetry is online with zero market friction. We are locking in initial operational baselines for the 400-room luxury inventory.
+        * **Required Sidebar Settings:** Set **Market Demand Shift** to `0%`, **AI Guardrails** to `ON`, and **Channel Strategy** to `Balanced (Direct/OTA)`.
+        * **Step-by-Step Team Instructions:**
           1. Navigate to **Module 1 (Executive Overview)** and verify baseline occupancy is locked at $85\\%$.
-          2. Check PMS, RMS, and HRIS integration sync across modules.
-        * **Key Insights to Evaluate:** Confirm that baseline headcount, ADR ($\$250$), and GOPPAR ($\$94.20$) align correctly before introducing market friction.
+          2. Check that PMS, RMS, and HRIS telemetry sync correctly.
+        * **Insights to Evaluate:** Record baseline ADR ($\$250$), RevPAR ($\$212.50$), and GOPPAR ($\$94.20$) before introducing stress factors.
         * **Mandatory Deliverable:** Signed Baseline Telemetry Verification Sign-off.
         """
     )
@@ -173,11 +179,13 @@ elif (
 ):
     st.error(
         """
-        **Status Report (Maria's Crisis):** Unchecked midweek convention compression has pushed demand up by $+18\\%$. Static scheduling has triggered runaway overtime and inflated HPOR.
-        * **Team Action Plan (09:30 - 11:30 Daily):**
-          1. Navigate to **Module 3 (Workforce Intelligence)** to evaluate LPR and HPOR.
-          2. Toggle **Cross-Departmental Labor Flexing** *ON* in the sidebar to allow F&B staff to absorb housekeeping turnover.
-        * **Key Insights to Evaluate:** Observe how departmental headcount shifts and watch HPOR drop from $2.5$ to $2.1$ hours.
+        **Status Report (Maria's Crisis):** Midweek convention compression has driven demand up by $+18\\%$. Static scheduling is failing, causing runaway overtime and surging HPOR.
+        * **Required Sidebar Settings:** Set **Market Demand Shift** to `+18%`, and toggle **Cross-Departmental Labor Flexing** `OFF` initially to observe the failure.
+        * **Step-by-Step Team Instructions:**
+          1. Navigate to **Module 3 (Workforce Intelligence)**.
+          2. Observe high labor cost percentages (LPR) and bloated housekeeping hours.
+          3. *Correction Step:* Toggle **Cross-Departmental Labor Flexing** `ON` in the sidebar to let F&B staff absorb turnover. Watch HPOR drop from $2.5$ to $2.1$ hours!
+        * **Insights to Evaluate:** Verify how dynamic labor sharing eliminates unbudgeted overtime without hurting guest satisfaction.
         * **Mandatory Deliverable:** Departmental Labor & Headcount Variance Sheet.
         """
     )
@@ -187,23 +195,27 @@ elif (
 ):
     st.warning(
         """
-        **Status Report (Elena's Audit):** ADR is climbing, but gross operating profits are stagnant due to heavy third-party OTA dependence.
-        * **Team Action Plan (10:00 - 12:00 Daily):**
+        **Status Report (Elena's Audit):** Average Daily Rate is climbing, but gross operating profits remain flat due to heavy OTA commission leakage.
+        * **Required Sidebar Settings:** Set **Channel Strategy** to `OTA Dependent Compression` and **Demand Shift** to `+5%`.
+        * **Step-by-Step Team Instructions:**
           1. Navigate to **Module 2 (Net RevPAR & Revenue Audit)**.
-          2. Review the channel mix breakdown and switch the sidebar strategy from *OTA Dependent Compression* to **Aggressive Direct Push**.
-        * **Key Insights to Evaluate:** Measure how net asset profitability changes when commission leakage drops from $18\\%$ to $4\\%$.
+          2. Analyze the channel mix chart to witness 18% commission siphoning.
+          3. *Correction Step:* Change the sidebar channel strategy to **Aggressive Direct Push** and observe how Net RevPAR recovers immediately without raising room rates.
+        * **Insights to Evaluate:** Prove to ownership that distribution cost management protects margins better than blind rate hikes.
         * **Mandatory Deliverable:** Channel Profitability & Net RevPAR Audit Report.
         """
     )
 elif st.session_state.active_scenario == "Month 4: AI Governance & Final Audit":
     st.error(
         """
-        **Status Report (Priya's Crucible):** Extreme market shocks ($+22\\%$ demand shift) with AI Guardrails disabled have caused automated batch jobs to misinterpret cancellations and execute unreviewed pricing cuts.
-        * **Team Action Plan (10:30 - 12:00 Daily):**
+        **Status Report (Priya's Crucible):** Extreme market shocks ($+22\\%$ demand shift) with AI Guardrails `OFF` have allowed an automated batch job to misinterpret group cancellations and execute unreviewed pricing cuts.
+        * **Required Sidebar Settings:** Set **Demand Shift** to `+22%` and ensure **AI Guardrails** is toggled `OFF` to witness the algorithmic crash.
+        * **Step-by-Step Team Instructions:**
           1. Navigate to **Module 4 (AI Governance & Stress-Testing)**.
-          2. Verify the red HITL (Human-in-the-Loop) error alerts triggered by variance ceiling breaches.
-          3. Click the button to **Download Current Simulation State (CSV)**.
-        * **Key Insights to Evaluate:** Audit unreviewed overrides and verify the necessity of strict algorithmic guardrails.
+          2. Review the live governance alert logs showing safety ceiling breaches.
+          3. Turn AI Guardrails back `ON` to see Human-in-the-Loop (HITL) locks engage.
+          4. Click **Download Current Simulation State (CSV)** at the bottom of the module.
+        * **Insights to Evaluate:** Validate that automation requires strict human oversight to prevent algorithmic drift.
         * **Mandatory Deliverable:** Final Executive AI Governance Audit Deck & CSV Audit Log.
         """
     )
@@ -217,7 +229,7 @@ if st.session_state.ai_guardrails:
     )
 else:
     st.warning(
-        "⚠️ **AI Governance Disabled:** Automated algorithms operating without strict variance guardrails."
+        "⚠️️ **AI Governance Disabled:** Automated algorithms operating without strict variance guardrails."
     )
 
 # Compute dynamic scaling factors based on demand shift
