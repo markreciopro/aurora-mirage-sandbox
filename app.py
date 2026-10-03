@@ -33,11 +33,11 @@ property_choice = st.sidebar.selectbox(
     ],
 )
 
-# Module Selection (Includes Step 1 Protocol & Schedule)
+# Module Selection (Includes Polished Step 1 Protocol & Schedule)
 module_choice = st.sidebar.selectbox(
     "Select Intelligence Module",
     [
-        "Step 1: Testing Protocol & Daily Schedule",
+        "Step 1: Testing Protocol & Monthly Schedule",
         "Module 1: Executive Overview & Daily Workflow",
         "Module 2: Net RevPAR & Revenue Audit",
         "Module 3: Workforce Intelligence & Labor Optimization",
@@ -84,8 +84,8 @@ st.sidebar.subheader("👥 Research Team Guide")
 with st.sidebar.expander("2-Person Sprint Instructions"):
     st.markdown(
         """
-    * **Principal Consultant / You:** Define daily stress-test scenarios, evaluate macro GOPPAR/margins, and manage HITL overrides when guardrails breach.
-    * **Graduate Researcher:** Execute sandbox simulations, log quantitative shifts across Net RevPAR and labor efficiency metrics, and export data logs.
+    * **Principal Consultant (You):** Define macro stress-test scenarios, govern AI override rules, and validate executive strategic alignment.
+    * **Graduate Researcher:** Execute sandbox simulation runs, log quantitative metric changes, and compile CSV audit exports.
     """
     )
 
@@ -95,7 +95,7 @@ with st.sidebar.expander("2-Person Sprint Instructions"):
 # Header Banner based on state
 if st.session_state.ai_guardrails:
     st.info(
-        "🛡️ **AI Governance Active:** Human-in-the-loop variance testing enabled for algorithmic yield recommendations."
+        "🛡️️ **AI Governance Active:** Human-in-the-loop variance testing enabled for algorithmic yield recommendations."
     )
 else:
     st.warning(
@@ -105,16 +105,16 @@ else:
 # Compute dynamic scaling factors based on demand shift
 demand_multiplier = 1 + (st.session_state.demand_shift / 100.0)
 
-# --- STEP 1: TESTING PROTOCOL & DAILY SCHEDULE ---
-if module_choice == "Step 1: Testing Protocol & Daily Schedule":
+# --- STEP 1: TESTING PROTOCOL & MONTHLY SCHEDULE ---
+if module_choice == "Step 1: Testing Protocol & Monthly Schedule":
     st.title("🎯 Step 1: Test and Interact with the Live Sandbox Controls")
     st.markdown(
-        "**Core Objective:** Establish operational control parameters and simulate real-time decision-making within the simulated 400-room Aurora Mirage property."
+        "**Core Objective:** Establish operational control parameters and simulate real-time decision-making within the simulated 400-room Aurora Mirage luxury property."
     )
 
     st.markdown("---")
 
-    # Layout for instructions
+    # Detailed Testing Instructions Layout
     col1, col2 = st.columns(2)
 
     with col1:
@@ -122,8 +122,8 @@ if module_choice == "Step 1: Testing Protocol & Daily Schedule":
         st.markdown(
             """
         * **Demand-Driven Scheduling:** Simulate high-compression days (e.g., Thursday arrivals and departures) to test demand-driven scheduling instead of fixed headcount guesses.
-        * **Foundational Labor KPIs:** Monitor **Labor Cost Percentage of Revenue (LPR)**, **Hours Per Occupied Room (HPOR)**, and **Revenue Per Available Labor Hour (REVPALH)**.
-        * **Cross-Departmental Flex:** Test cross-departmental flex protocols where front-of-house and F&B staff support housekeeping during spikes before overtime is approved.
+        * **Foundational Labor KPIs:** Monitor **Labor Cost Percentage of Revenue (LPR)**, **Hours Per Occupied Room (HPOR)**, and **Revenue Per Available Labor Hour (REVPALH)** across operational shifts.
+        * **Cross-Departmental Flex Protocols:** Test cross-departmental flex protocols where front-of-house and F&B staff support housekeeping during turnover spikes before overtime is approved.
         """
         )
 
@@ -131,7 +131,7 @@ if module_choice == "Step 1: Testing Protocol & Daily Schedule":
         st.markdown(
             """
         * **Margin Leak Identification:** Track ADR and RevPAR alongside TRevPAR and Net RevPAR to identify margin leaks caused by heavy OTA commissions.
-        * **Channel Shifts:** Simulate channel shifts (e.g., shifting revenue share toward direct bookings) to observe immediate margin protection without altering room rates.
+        * **Channel Shift Simulations:** Switch distribution channel strategies toward direct bookings to observe immediate margin protection without altering base room rates.
         """
         )
 
@@ -144,37 +144,44 @@ if module_choice == "Step 1: Testing Protocol & Daily Schedule":
         """
         )
 
+        st.info(
+            "💡 **Two-Party Execution Tip:** Use the sidebar controls to test parameters together during daily standups, then check Modules 1–4 to observe telemetry ripples and export audit logs."
+        )
+
     st.markdown("---")
     st.subheader(
-        "📅 Recommended Daily Sprint Schedule (You & Graduate Researcher)"
+        "📅 Recommended Monthly Research Schedule (Two-Party Execution)"
     )
 
-    schedule_data = pd.DataFrame(
+    monthly_schedule_df = pd.DataFrame(
         {
-            "Sprint Day": [
-                "Day 1",
-                "Day 2",
-                "Day 3",
-                "Day 4",
-                "Day 5",
+            "Sprint Phase": [
+                "Phase 1: Week 1",
+                "Phase 2: Week 2",
+                "Phase 3: Week 3",
+                "Phase 4: Week 4",
             ],
-            "Focus Area": [
-                "Baseline Calibration",
-                "Workforce Stress-Testing",
-                "Channel Mix Optimization",
-                "AI Guardrails & HITL Testing",
-                "Synthesis & Audit Export",
+            "Focus & Objective": [
+                "Baseline Calibration & System Sync",
+                "Workforce & Labor Stress-Testing",
+                "Revenue & Channel Mix Optimization",
+                "AI Governance, HITL & Final Export",
             ],
-            "Assigned Actions": [
-                "Initialize PMS/HRIS data sync with 0% demand shift and verify standard baseline metrics.",
-                "Apply +15% / -15% demand shifts to test HPOR, LPR, and cross-departmental flexing behavior.",
-                "Switch distribution channel strategies to measure net profit protection against OTA commission drag.",
-                "Trigger out-of-bounds demand shocks (>15%) to test AI governance locks and override logging.",
-                "Review cumulative audit logs, test variance reports, and export CSV session data for your case study.",
+            "Principal Consultant Actions (You)": [
+                "Define property boundary parameters and verify PMS/HRIS data stream baseline integrity.",
+                "Review departmental headcounts and approve/reject simulated overtime requests under stress.",
+                "Evaluate gross vs. net asset profitability and set channel acquisition targets.",
+                "Review HITL override logs and sign off on governance audit reports for publication.",
+            ],
+            "Graduate Researcher Actions": [
+                "Initialize sandbox environment at 0% demand shift and record initial baseline metrics.",
+                "Apply $\pm 15\%$ demand shocks via sidebar slider; log HPOR, LPR, and flexing impacts.",
+                "Switch channel strategies between OTA and direct push; record net margin variances.",
+                "Execute final extreme shock runs (>15%), compile anomaly logs, and export session CSVs.",
             ],
         }
     )
-    st.table(schedule_data)
+    st.table(monthly_schedule_df)
 
 
 # --- MODULE 1: EXECUTIVE OVERVIEW ---
