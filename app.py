@@ -37,7 +37,7 @@ property_choice = st.sidebar.selectbox(
 module_choice = st.sidebar.selectbox(
     "Select Intelligence Module",
     [
-        "Step 1: Control Center Guide & 4-Month Daily Schedule",
+        "Step 1: Control Center & 4-Month Daily Schedule",
         "Module 1: Executive Overview & Daily Workflow",
         "Module 2: Net RevPAR & Revenue Audit",
         "Module 3: Workforce Intelligence & Labor Optimization",
@@ -105,8 +105,8 @@ else:
 # Compute dynamic scaling factors based on demand shift
 demand_multiplier = 1 + (st.session_state.demand_shift / 100.0)
 
-# --- STEP 1: CONTROL CENTER GUIDE & 4-MONTH DAILY SCHEDULE ---
-if module_choice == "Step 1: Control Center Guide & 4-Month Daily Schedule":
+# --- STEP 1: CONTROL CENTER & 4-MONTH DAILY SCHEDULE ---
+if module_choice == "Step 1: Control Center & 4-Month Daily Schedule":
     st.title("🎯 Step 1: Aurora Control Center Guide & Daily Action Blueprint")
     st.markdown(
         "**Core Objective:** Master the sidebar **Aurora Control Center** parameters and execute a structured, day-by-day operational testing protocol across the 400-room Aurora Mirage property."
@@ -118,23 +118,23 @@ if module_choice == "Step 1: Control Center Guide & 4-Month Daily Schedule":
     col1, col2 = st.columns(2)
 
     with col1:
-        st.subheader("🎛️ How to Use the Aurora Control Center")
+        st.subheader("🎛️ Mastering the Aurora Control Center")
         st.markdown(
             """
-        * **Market Demand Shift Slider:** Drag between $-25\%$ and $+25\%$ to simulate group cancellations or heavy convention compression.
-        * **AI Algorithmic Drift Guardrails:** Toggle ON to enforce strict $15\%$ variance limits that trigger Human-In-The-Loop (HITL) locks.
-        * **Distribution Channel Strategy:** Switch between *Balanced*, *Aggressive Direct Push*, and *OTA Dependent Compression* to analyze commission margin leaks.
-        * **Cross-Departmental Labor Flexing:** Toggle ON to let F&B staff support housekeeping during turnover spikes, lowering Hours Per Occupied Room (HPOR).
+        * **Market Demand Shift Slider:** Adjust from $-25\%$ to $+25\%$ to simulate convention compression, holiday peaks, or sudden group cancellations.
+        * **AI Algorithmic Drift Guardrails:** Toggle ON to enforce strict variance limits ($15\%$) that automatically lock pricing and trigger Human-In-The-Loop (HITL) review.
+        * **Distribution Channel Strategy:** Switch between *Balanced*, *Aggressive Direct Push*, and *OTA Dependent Compression* to uncover OTA commission leakage.
+        * **Cross-Departmental Labor Flexing:** Toggle ON to allow F&B support staff to assist housekeeping during peak turnover windows, reducing HPOR.
         """
         )
 
     with col2:
-        st.subheader("👥 Two-Party Daily Execution Workflow")
+        st.subheader("👥 Daily Two-Party Execution Workflow")
         st.markdown(
             """
-        * **Daily Standup (10 Mins):** Principal Consultant sets the target market shock parameter in the sidebar. Graduate researcher runs the simulation.
-        * **Data Logging:** Record changes in ADR, RevPAR, GOPPAR, and LPR across Modules 1 through 3.
-        * **Audit & Export:** Use Module 4 to review AI drift logs and export session CSV datasets for client reporting.
+        * **Step A (Morning Standup):** Principal Consultant sets target market shock parameters in the sidebar. Graduate researcher runs the simulation.
+        * **Step B (Data Logging):** Track ripples across occupancy, ADR, RevPAR, GOPPAR, and LPR in Modules 1–3.
+        * **Step C (Audit & Export):** Review AI drift logs in Module 4 and export session CSV datasets for client reporting.
         """
         )
 
@@ -155,7 +155,7 @@ if module_choice == "Step 1: Control Center Guide & 4-Month Daily Schedule":
                 "Month 4: AI Governance & Final Audit",
             ],
             "Daily Operational Focus": [
-                "Establish 0% demand baseline; verify PMS, RMS, and HRIS telemetry sync in Modules 1–3.",
+                "Establish 0% demand baseline; verify PMS, RMS, and HRIS telemetry sync in Modules 1–3 daily.",
                 "Execute daily demand shocks ($\pm 10\\%$ to $\pm 20\\%$); test labor flexing protocols under compression.",
                 "Simulate channel strategy shifts daily; audit net commission leakage and direct booking acquisition costs.",
                 "Trigger extreme market shocks ($>15\\%$) with guardrails ON/OFF; review HITL overrides and export CSVs.",
