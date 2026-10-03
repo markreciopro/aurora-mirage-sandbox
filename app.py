@@ -1,4 +1,5 @@
 import pandas as pd
+import plotly.express as px
 import streamlit as st
 
 # Set page configuration
@@ -52,7 +53,36 @@ st.sidebar.caption(
 )
 
 st.sidebar.markdown("---")
-st.sidebar.subheader("🎛️️ Live Digital Twin Parameters")
+st.sidebar.subheader("⚡ Narrative Scenario Presets")
+st.sidebar.markdown(
+    "*Instantly load key manuscript milestones for stakeholders:*"
+)
+
+col_p1, col_p2 = st.sidebar.columns(2)
+if col_p1.button("🚨 Day 1 Overtime"):
+    st.session_state.demand_shift = 18
+    st.session_state.labor_flexing = False
+    st.session_state.ai_guardrails = False
+    st.rerun()
+
+if col_p2.button("💰 Rev. Leak"):
+    st.session_state.channel_mix = "OTA Dependent Compression"
+    st.session_state.demand_shift = 5
+    st.rerun()
+
+col_p3, col_p4 = st.sidebar.columns(2)
+if col_p3.button("🏗️ Supply Shock"):
+    st.session_state.demand_shift = -15
+    st.session_state.ai_guardrails = True
+    st.rerun()
+
+if col_p4.button("🤖 AI Crash"):
+    st.session_state.demand_shift = 22
+    st.session_state.ai_guardrails = False
+    st.rerun()
+
+st.sidebar.markdown("---")
+st.sidebar.subheader("🎛️ Live Digital Twin Parameters")
 
 # Interactive Sliders & Toggles tied to session state
 st.session_state.demand_shift = st.sidebar.slider(
@@ -102,7 +132,7 @@ with st.sidebar.expander("Two-Party Execution Protocol"):
 st.image(
     "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80",
     caption="Aurora Mirage Resort & Casino — 400-Room Luxury Flagship Property | MAREC Insights Digital Twin",
-    use_container_width=True
+    use_container_width=True,
 )
 
 # Header Banner based on state
@@ -261,6 +291,22 @@ elif module_choice == "Module 1: Executive Overview & Daily Workflow":
         )
 
     df_forecast = pd.DataFrame(forecast_data)
+
+    # Interactive Plotly Chart for Module 1 Demand Curve
+    fig_demand = px.bar(
+        df_forecast,
+        x="Day",
+        y="Projected Occupancy (%)",
+        text="Projected Occupancy (%)",
+        title="Weekly Occupancy & Demand Compression Profile",
+        color="Projected Occupancy (%)",
+        color_continuous_scale="Viridis",
+    )
+    fig_demand.update_layout(
+        plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)"
+    )
+    st.plotly_chart(fig_demand, use_container_width=True)
+
     st.dataframe(df_forecast, use_container_width=True)
 
 
@@ -303,14 +349,24 @@ elif module_choice == "Module 2: Net RevPAR & Revenue Audit":
                 "Corporate / Group",
                 "Third-Party OTAs",
             ],
-            "Commission Cost (%)": ["2%", "5%", "18%"],
-            "Net Contribution (%)": [
-                "45%",
-                "35%",
-                "20% (Shiftable)",
-            ],
+            "Commission Cost (%)": [2, 5, 18],
+            "Net Contribution (%)": [45, 35, 20],
         }
     )
+
+    fig_channel = px.bar(
+        channel_data,
+        x="Channel Strategy",
+        y="Net Contribution (%)",
+        color="Channel Strategy",
+        title="Channel Mix Contribution vs. Commission Leakage",
+        text="Net Contribution (%)",
+    )
+    fig_channel.update_layout(
+        plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)"
+    )
+    st.plotly_chart(fig_channel, use_container_width=True)
+
     st.table(channel_data)
 
 
@@ -379,6 +435,19 @@ elif module_choice == "Module 3: Workforce Intelligence & Labor Optimization":
             ],
         }
     )
+
+    fig_dept = px.bar(
+        dept_data,
+        x="Department",
+        y=["Base Headcount", "Adjusted Shift Headcount"],
+        barmode="group",
+        title="Departmental Headcount Shifting Under Demand Stress",
+    )
+    fig_dept.update_layout(
+        plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)"
+    )
+    st.plotly_chart(fig_dept, use_container_width=True)
+
     st.dataframe(dept_data, use_container_width=True)
 
 
@@ -400,7 +469,7 @@ elif module_choice == "Module 4: AI Governance & Stress-Testing Sandbox":
         and not st.session_state.ai_guardrails
     ):
         st.warning(
-            "⚠️ **Guardrails Bypassed:** Extreme demand shift executed automatically without human sign-off. Algorithmic drift risk is elevated."
+            "⚠️️ **Guardrails Bypassed:** Extreme demand shift executed automatically without human sign-off. Algorithmic drift risk is elevated."
         )
     else:
         st.success(
