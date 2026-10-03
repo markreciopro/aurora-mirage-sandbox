@@ -18,6 +18,8 @@ if "channel_mix" not in st.session_state:
     st.session_state.channel_mix = "Balanced (Direct/OTA)"
 if "labor_flexing" not in st.session_state:
     st.session_state.labor_flexing = False
+if "active_scenario" not in st.session_state:
+    st.session_state.active_scenario = "Baseline Operations"
 
 # --- SIDEBAR: AURORA CONTROL CENTER ---
 st.sidebar.header("🏨 Aurora Control Center")
@@ -53,32 +55,34 @@ st.sidebar.caption(
 )
 
 st.sidebar.markdown("---")
-st.sidebar.subheader("⚡ Narrative Scenario Presets")
-st.sidebar.markdown(
-    "*Instantly load key manuscript milestones for stakeholders:*"
-)
+st.sidebar.subheader("⚡ Team Training Scenarios")
+st.sidebar.markdown("*Select a mission to brief your research team:*")
 
 col_p1, col_p2 = st.sidebar.columns(2)
 if col_p1.button("🚨 Day 1 Overtime"):
     st.session_state.demand_shift = 18
     st.session_state.labor_flexing = False
     st.session_state.ai_guardrails = False
+    st.session_state.active_scenario = "Day 1 Overtime Crisis"
     st.rerun()
 
 if col_p2.button("💰 Rev. Leak"):
     st.session_state.channel_mix = "OTA Dependent Compression"
     st.session_state.demand_shift = 5
+    st.session_state.active_scenario = "Module 2 Revenue Leak Audit"
     st.rerun()
 
 col_p3, col_p4 = st.sidebar.columns(2)
 if col_p3.button("🏗️ Supply Shock"):
     st.session_state.demand_shift = -15
     st.session_state.ai_guardrails = True
+    st.session_state.active_scenario = "Module 3 Supply Shock"
     st.rerun()
 
 if col_p4.button("🤖 AI Crash"):
     st.session_state.demand_shift = 22
     st.session_state.ai_guardrails = False
+    st.session_state.active_scenario = "Module 4 Algorithm Crash"
     st.rerun()
 
 st.sidebar.markdown("---")
@@ -135,6 +139,58 @@ st.image(
     use_container_width=True,
 )
 
+# --- ENGAGING MISSION BRIEFING BOX ---
+st.markdown(f"### 🎯 Active Mission Briefing: `{st.session_state.active_scenario}`")
+
+if st.session_state.active_scenario == "Day 1 Overtime Crisis":
+    st.error(
+        """
+        **Situation Report (Maria's Crisis):** Unchecked midweek convention compression has pushed occupancy up by 18%. Because scheduling is based on static guesses rather than departures, overtime is surging and housekeeping hours per occupied room (HPOR) are out of control.
+        * **Your Team Instructions:** 
+          1. Navigate to **Module 3 (Workforce Intelligence)**.
+          2. Observe how LPR and HPOR spike when labor flexing is disabled.
+          3. Toggle **Cross-Departmental Labor Flexing** *ON* in the sidebar to simulate F&B staff assisting housekeeping and record the recovery!
+        """
+    )
+elif st.session_state.active_scenario == "Module 2 Revenue Leak Audit":
+    st.warning(
+        """
+        **Situation Report (Elena's Audit):** Average Daily Rate (ADR) looks strong, but gross operating profits are slipping. High OTA reliance is quietly siphoning property margins.
+        * **Your Team Instructions:**
+          1. Navigate to **Module 2 (Net RevPAR & Revenue Audit)**.
+          2. Examine the channel mix chart to identify commission leakage.
+          3. Switch the sidebar distribution strategy to **Aggressive Direct Push** and observe how Net RevPAR recovers without touching room rates.
+        """
+    )
+elif st.session_state.active_scenario == "Module 3 Supply Shock":
+    st.info(
+        """
+        **Situation Report (Devon's Scenario Shift):** Competing luxury towers have opened nearby, creating a negative demand shock (-15%). Management is tempted to discount rates blindly.
+        * **Your Team Instructions:**
+          1. Navigate to **Module 1 (Executive Overview)** or **Module 3**.
+          2. Study the demand forecast curve under negative compression.
+          3. Ensure AI Guardrails remain enabled to protect rate integrity against elastic demand destruction.
+        """
+    )
+elif st.session_state.active_scenario == "Module 4 Algorithm Crash":
+    st.error(
+        """
+        **Situation Report (Priya's Crucible):** A sudden group cancellation caused an automated AI batch job to slash Thursday's rates and labor by 22% overnight without human review.
+        * **Your Team Instructions:**
+          1. Navigate to **Module 4 (AI Governance & Stress-Testing)**.
+          2. Check the Live Governance Audit Log to review the HITL (Human-in-the-Loop) safety locks.
+          3. Export the simulation state CSV to log the override variance for executive review.
+        """
+    )
+else:
+    st.success(
+        """
+        **Situation Report (Baseline Operations):** The 400-room Aurora Mirage property is operating under stable conditions. Use this state to calibrate initial telemetry before executing stress tests.
+        """
+    )
+
+st.markdown("---")
+
 # Header Banner based on state
 if st.session_state.ai_guardrails:
     st.info(
@@ -182,10 +238,6 @@ if module_choice == "Step 1: 4-Month Daily Time Schedule & Deliverables":
     st.subheader(
         "⏰ Time-Stamped Master Daily Operational Schedule (Months 1–4)"
     )
-    st.markdown(
-        "This schedule provides exact time-stamped hourly intervals, daily operational instructions, accountable roles, concrete examples, and mandatory daily deliverables."
-    )
-
     time_schedule_df = pd.DataFrame(
         {
             "Month & Phase": [
@@ -200,18 +252,6 @@ if module_choice == "Step 1: 4-Month Daily Time Schedule & Deliverables":
                 "**09:00 - 10:00:** Channel Toggle\n**10:00 - 12:00:** Commission Audit",
                 "**09:00 - 10:30:** Extreme Shock Test\n**10:30 - 12:00:** HITL & CSV Export",
             ],
-            "Daily Operational Instructions": [
-                "Set Demand Shift to 0%, select 400-Room Property. Verify PMS, RMS, and HRIS telemetry sync across Modules 1–3.",
-                "Apply daily demand shocks ($\pm 10\\%$ to $\pm 20\\%$) with Labor Flexing ON/OFF. Log HPOR & LPR shifts in Module 3.",
-                "Switch distribution channel strategies between OTAs and Direct Push. Audit net commission leakage in Module 2.",
-                "Trigger extreme market shocks ($>15\\%$) with AI Guardrails ON/OFF. Review HITL logs and export session CSVs.",
-            ],
-            "Concrete Example & Action": [
-                "**Example:** Keep Demand Shift at $0\\%$. *Action:* Open Module 1, verify baseline occupancy is locked at $85\\%$, and record baseline headcount.",
-                "**Example:** Set Demand Shift to $+18\\%$, toggle Labor Flexing ON. *Action:* Check Module 3 to verify HPOR drops to $2.1$ hrs and F&B absorbs turnover.",
-                "**Example:** Switch Channel Strategy to *OTA Dependent Compression*. *Action:* Go to Module 2 and record margin compression from $18\\%$ OTA commissions.",
-                "**Example:** Set Demand Shift to $+22\\%$ with Guardrails ON. *Action:* Verify Module 4 displays the red HITL override alert and download audit CSV.",
-            ],
             "Daily Deliverable": [
                 "Signed Baseline Telemetry Verification Sign-off.",
                 "Departmental Labor & Headcount Variance Sheet.",
@@ -222,7 +262,6 @@ if module_choice == "Step 1: 4-Month Daily Time Schedule & Deliverables":
     )
     st.table(time_schedule_df)
 
-    # CSV Download for Time Schedule
     time_csv = time_schedule_df.to_csv(index=False).encode("utf-8")
     st.download_button(
         label="📥 Download Time-Stamped Schedule & Deliverables (CSV)",
@@ -292,7 +331,6 @@ elif module_choice == "Module 1: Executive Overview & Daily Workflow":
 
     df_forecast = pd.DataFrame(forecast_data)
 
-    # Interactive Plotly Chart for Module 1 Demand Curve
     fig_demand = px.bar(
         df_forecast,
         x="Day",
@@ -469,7 +507,7 @@ elif module_choice == "Module 4: AI Governance & Stress-Testing Sandbox":
         and not st.session_state.ai_guardrails
     ):
         st.warning(
-            "⚠️️ **Guardrails Bypassed:** Extreme demand shift executed automatically without human sign-off. Algorithmic drift risk is elevated."
+            "⚠️ **Guardrails Bypassed:** Extreme demand shift executed automatically without human sign-off. Algorithmic drift risk is elevated."
         )
     else:
         st.success(
