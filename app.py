@@ -40,7 +40,7 @@ st.sidebar.caption(
 module_choice = st.sidebar.selectbox(
     "Select Intelligence Module",
     [
-        "Step 1: Daily Operational Guide & 30-Day Schedule",
+        "Step 1: 4-Month Daily Time Schedule & Deliverables",
         "Module 1: Executive Overview & Daily Workflow",
         "Module 2: Net RevPAR & Revenue Audit",
         "Module 3: Workforce Intelligence & Labor Optimization",
@@ -111,89 +111,86 @@ else:
 # Compute dynamic scaling factors based on demand shift
 demand_multiplier = 1 + (st.session_state.demand_shift / 100.0)
 
-# --- STEP 1: DAILY OPERATIONAL GUIDE & 30-DAY SCHEDULE ---
-if module_choice == "Step 1: Daily Operational Guide & 30-Day Schedule":
-    st.title(
-        "🎯 Step 1: Aurora Control Center & Daily Operational Testing Blueprint"
-    )
+# --- STEP 1: 4-MONTH DAILY TIME SCHEDULE & DELIVERABLES ---
+if module_choice == "Step 1: 4-Month Daily Time Schedule & Deliverables":
+    st.title("🎯 Step 1: 4-Month Master Daily Time-Stamped Schedule & Deliverables")
     st.markdown(
-        "**Core Objective:** Master the daily workflow by combining **Property Configurations**, **Intelligence Modules**, and **Sidebar Controls** to execute a rigorous 30-day evaluation schedule."
+        "**Core Objective:** Execute a disciplined, hour-by-hour time-blocked daily routine across four months to calibrate, stress-test, optimize, and audit the **Aurora Mirage Digital Twin**."
     )
 
     st.markdown("---")
 
-    # How-To Guide for Configurations and Modules
     col1, col2 = st.columns(2)
 
     with col1:
-        st.subheader("🏢 How to Use Property Configurations")
+        st.subheader("🏢 Property Configuration Guidelines")
         st.markdown(
             """
-        * **Aurora Mirage Resort & Casino (400 Rooms):** Use for macro-level convention compression, high-volume F&B labor flexing, and complex gaming resort revenue audits.
-        * **Boutique Expansion Asset (150 Rooms):** Switch to this property configuration when testing nimble direct-booking strategies and lean staffing models where overhead sensitivity is higher.
-        * **Daily Workflow Rule:** Select your property configuration first thing every morning before adjusting market demand sliders.
+        * **Aurora Mirage Resort & Casino (400 Rooms):** Best for high-volume convention compression, complex F&B labor flexing, and multi-channel revenue audits.
+        * **Boutique Expansion Asset (150 Rooms):** Ideal for testing nimble direct-booking pushes and lean staffing models.
         """
         )
 
     with col2:
-        st.subheader("📊 How to Use Intelligence Modules Daily")
+        st.subheader("📊 Intelligence Module Rotation")
         st.markdown(
             """
-        * **Module 1 (Executive Overview):** Review baseline occupancy, ADR, RevPAR, and 7-day forecast curves each morning.
-        * **Module 2 (Revenue Audit):** Audit net commission leakage and switch distribution channel strategies mid-week.
-        * **Module 3 (Workforce Intelligence):** Monitor HPOR and LPR; test labor flexing toggles during peak turnover days.
-        * **Module 4 (AI Governance):** Review HITL anomaly alerts under market stress and export session CSV audit logs.
+        * **Morning Block:** Check **Module 1** (Overview) & **Module 3** (Workforce).
+        * **Midday Block:** Audit **Module 2** (Revenue & Channels).
+        * **Evening Block:** Review **Module 4** (AI Governance & Export).
         """
         )
 
     st.markdown("---")
-    st.subheader("📅 Day-to-Day Operational Testing Schedule (Days 1–30)")
+    st.subheader(
+        "⏰ Time-Stamped Master Daily Operational Schedule (Months 1–4)"
+    )
     st.markdown(
-        "Follow this exact day-by-day protocol to conduct structured testing, evaluate telemetry ripples, and generate client-ready deliverables."
+        "This schedule provides exact time-stamped hourly intervals, daily operational instructions, accountable roles, concrete examples, and mandatory daily deliverables."
     )
 
-    day_schedule_df = pd.DataFrame(
+    time_schedule_df = pd.DataFrame(
         {
-            "Day / Timeline": [
-                "Days 1 – 5: Baseline Calibration",
-                "Days 6 – 12: Workforce Stress-Testing",
-                "Days 13 – 20: Channel Margin Optimization",
-                "Days 21 – 30: AI Governance & Final Audit",
+            "Month & Phase": [
+                "Month 1: Baseline Calibration & Telemetry Setup",
+                "Month 2: Workforce & Labor Stress-Testing",
+                "Month 3: Revenue & Channel Margin Optimization",
+                "Month 4: AI Governance & Final Audit",
             ],
-            "Daily Action Required": [
-                "Set Demand Shift to 0%, select 400-Room Property. Verify telemetry sync across Modules 1–3.",
-                "Apply daily demand shocks ($\pm 10\\%$ to $\pm 20\\%$) with Labor Flexing ON/OFF. Log HPOR & LPR shifts.",
-                "Switch channel strategy between OTAs and Direct Push. Audit net margin impact in Module 2.",
-                "Trigger extreme market shocks ($>15\\%$) with AI Guardrails ON/OFF. Review HITL logs and export CSV.",
+            "Time-Stamped Daily Schedule": [
+                "**09:00 - 09:30:** System Sync & Init\n**09:30 - 11:00:** Baseline Audit",
+                "**09:00 - 09:30:** Shock Setup\n**09:30 - 11:30:** Labor Flexing Test",
+                "**09:00 - 10:00:** Channel Toggle\n**10:00 - 12:00:** Commission Audit",
+                "**09:00 - 10:30:** Extreme Shock Test\n**10:30 - 12:00:** HITL & CSV Export",
             ],
-            "Responsible Party": [
-                "Principal Consultant & Researcher",
-                "Graduate Researcher (Daily Execution)",
-                "Principal Consultant & Researcher",
-                "Principal Consultant (Final Sign-Off)",
+            "Daily Operational Instructions": [
+                "Set Demand Shift to 0%, select 400-Room Property. Verify PMS, RMS, and HRIS telemetry sync across Modules 1–3.",
+                "Apply daily demand shocks ($\pm 10\\%$ to $\pm 20\\%$) with Labor Flexing ON/OFF. Log HPOR & LPR shifts in Module 3.",
+                "Switch distribution channel strategies between OTAs and Direct Push. Audit net commission leakage in Module 2.",
+                "Trigger extreme market shocks ($>15\\%$) with AI Guardrails ON/OFF. Review HITL logs and export session CSVs.",
             ],
             "Concrete Example & Action": [
-                "**Example (Day 3):** Keep Demand Shift at $0\\%$. *Action:* Open Module 1, verify baseline occupancy is locked at $85\\%$, and record baseline headcount in Module 3.",
-                "**Example (Day 8):** Set Demand Shift to $+18\\%$, toggle Labor Flexing ON. *Action:* Check Module 3 to verify HPOR drops to $2.1$ hrs and F&B staff absorbs housekeeping turnover.",
-                "**Example (Day 15):** Switch Channel Strategy to *OTA Dependent Compression*. *Action:* Go to Module 2 and record the margin compression caused by $18\\%$ OTA commissions.",
-                "**Example (Day 25):** Set Demand Shift to $+22\\%$ with Guardrails ON. *Action:* Verify Module 4 displays the red HITL override alert and download the audit CSV.",
+                "**Example:** Keep Demand Shift at $0\\%$. *Action:* Open Module 1, verify baseline occupancy is locked at $85\\%$, and record baseline headcount.",
+                "**Example:** Set Demand Shift to $+18\\%$, toggle Labor Flexing ON. *Action:* Check Module 3 to verify HPOR drops to $2.1$ hrs and F&B absorbs turnover.",
+                "**Example:** Switch Channel Strategy to *OTA Dependent Compression*. *Action:* Go to Module 2 and record margin compression from $18\\%$ OTA commissions.",
+                "**Example:** Set Demand Shift to $+22\\%$ with Guardrails ON. *Action:* Verify Module 4 displays the red HITL override alert and download audit CSV.",
             ],
             "Daily Deliverable": [
-                "Baseline Telemetry Verification Sign-off.",
+                "Signed Baseline Telemetry Verification Sign-off.",
                 "Departmental Labor & Headcount Variance Sheet.",
                 "Channel Profitability & Net RevPAR Audit Report.",
                 "Final Executive AI Governance Audit Deck.",
             ],
         }
     )
-    st.table(day_schedule_df)
+    st.table(time_schedule_df)
 
-    # CSV Download for 30-Day Schedule
-    schedule_csv = day_schedule_df.to_csv(index=False).encode("utf-8")
+    # CSV Download for Time Schedule
+    time_csv = time_schedule_df.to_csv(index=False).encode("utf-8")
     st.download_button(
-        label="📥 Download Day-to-Day Operational Testing Schedule (CSV)",
-        data=schedule_csv,
-        file_name="aurora_mirage_30_day_operational_schedule.csv",
+        label="📥 Download Time-Stamped Schedule & Deliverables (CSV)",
+        data=time_csv,
+        file_name="aurora_mirage_time_schedule_deliverables.csv",
         mime="text/csv",
     )
 
@@ -422,4 +419,4 @@ elif module_choice == "Module 4: AI Governance & Stress-Testing Sandbox":
         data=csv_data,
         file_name="aurora_mirage_simulation_log.csv",
         mime="text/csv",
-    ) 
+    )
